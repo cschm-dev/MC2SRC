@@ -1,3 +1,28 @@
 Tested in Minecraft 1.21.5.
 
 Works pretty decent some block which have multiple sides e.g. bee hives are not automated 
+
+
+Recommended settings:
+<pre> ```
+
+{
+    "world_path": "PATH_TO_WORLD_FOLDER",
+    "output_path": "VMF_OUTPUT",
+    "x1": "0",
+    "z1": "0",
+    "x2": "100",
+    "z2": "100",
+    "y_min": "-64",
+    "y_max": "320",
+    "materials_path": "PATH_TO_MC_MATERIALS relative to the materials folder e.g. just minecraft_magenta",
+    "face_mapping": "standard",
+    "force_ns": false,
+    "force_ew": true,
+    "group_mode": "no_group",
+    "merge_blocks": true,
+    "texture_scale_x": 0.375,
+    "texture_scale_y": 0.375
+}
+  
+``` </pre>
