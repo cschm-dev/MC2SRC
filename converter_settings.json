@@ -1,0 +1,18 @@
+{
+    "world_path": "//vmware-host/Shared Folders/VM-Share/world",
+    "output_path": "C:/Users/Magenta/Desktop/abw.vmf",
+    "x1": "-100",
+    "z1": "25",
+    "x2": "48",
+    "z2": "107",
+    "y_min": "-45",
+    "y_max": "100",
+    "materials_path": "minecraft_magenta",
+    "face_mapping": "standard",
+    "force_ns": false,
+    "force_ew": true,
+    "group_mode": "no_group",
+    "merge_blocks": true,
+    "texture_scale_x": 0.375,
+    "texture_scale_y": 0.375
+}

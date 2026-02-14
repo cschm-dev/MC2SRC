@@ -1,0 +1,3 @@
+amulet
+pywavefront
+# PyVMF is included as a local folder, not pip-installed
