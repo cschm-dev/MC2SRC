@@ -1,7 +1,7 @@
 """VMF file creation and material application"""
 
 import logging
-from PyVMF import VMF, World as VMFWorld, Group
+from pyvmf import PyVMF, World as VMFWorld, Group, VMF
 from .constants import BLOCK_SIZE
 from .textures import get_texture
 from .block_detector import get_exposed_blocks

@@ -1,4 +1,4 @@
-from PyVMF import *
+from pyvmf import PyVMF
 from random import randint
 from typing import List
 

@@ -18,3 +18,4 @@ debug/
 .idea/
 .DS_Store
 Thumbs.db
+converter_settings.json

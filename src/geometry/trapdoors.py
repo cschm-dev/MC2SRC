@@ -1,6 +1,6 @@
 """Falltüren-Geometrie"""
 
-from PyVMF import SolidGenerator, Vertex
+from pyvmf import SolidGenerator, Vertex
 from ..constants import BLOCK_SIZE
 
 
