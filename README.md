@@ -8,7 +8,7 @@ Your MC map can contain full blocks, fences, trapdoors (which are currently not 
 Everything else converts to a full block.
 
 Here are the textures I used for the map:
-[Linktext](https://steamcommunity.com/sharedfiles/filedetails/?id=3665986205)
+[Steam](https://steamcommunity.com/sharedfiles/filedetails/?id=3665986205)
 
 Recommended settings:
 <pre>
