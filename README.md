@@ -4,7 +4,7 @@ Works pretty decent some block which have multiple sides e.g. bee hives are not 
 
 
 Recommended settings:
-<pre> ```
+<pre>
 
 {
     "world_path": "PATH_TO_WORLD_FOLDER",
@@ -25,4 +25,4 @@ Recommended settings:
     "texture_scale_y": 0.375
 }
   
-``` </pre>
+</pre>
