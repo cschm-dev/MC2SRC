@@ -21,45 +21,49 @@ def create_trapdoor(solids, x, y, z, properties):
     
     if properties:
         if "facing" in properties:
-            facing = properties["facing"].py_str
+            facing = properties["facing"]
         if "half" in properties:
-            half = properties["half"].py_str
+            half = properties["half"]
         if "open" in properties:
-            is_open = properties["open"].py_str == "true"
+            is_open = properties["open"] == "true"
     
     trapdoor_thickness = BLOCK_SIZE / 6
     
     if not is_open:
-        # Geschlossen - horizontal
+        # Closed - horizontal
         if half == "top":
             solids.append(
-                sg.cube(Vertex(x, y, z + BLOCK_SIZE - trapdoor_thickness), 
+                sg.cube(Vertex(x, y, z + BLOCK_SIZE - trapdoor_thickness),
                         BLOCK_SIZE, BLOCK_SIZE, trapdoor_thickness)
             )
         else:
             solids.append(
-                sg.cube(Vertex(x, y, z), 
+                sg.cube(Vertex(x, y, z),
                         BLOCK_SIZE, BLOCK_SIZE, trapdoor_thickness)
             )
     else:
-        # Geöffnet - vertikal
+        # Open - vertical, attached to the correct (opposite) side
         if facing == "north":
+            # attached to south (y + BLOCK_SIZE - thickness)
             solids.append(
-                sg.cube(Vertex(x, y, z), 
+                sg.cube(Vertex(x, y + BLOCK_SIZE - trapdoor_thickness, z),
                         BLOCK_SIZE, trapdoor_thickness, BLOCK_SIZE)
             )
         elif facing == "south":
+            # attached to north (y)
             solids.append(
-                sg.cube(Vertex(x, y + BLOCK_SIZE - trapdoor_thickness, z), 
+                sg.cube(Vertex(x, y, z),
                         BLOCK_SIZE, trapdoor_thickness, BLOCK_SIZE)
             )
-        elif facing == "east":
+        elif facing == "west":
+            # attached to east (x + BLOCK_SIZE - thickness)
             solids.append(
-                sg.cube(Vertex(x + BLOCK_SIZE - trapdoor_thickness, y, z), 
+                sg.cube(Vertex(x + BLOCK_SIZE - trapdoor_thickness, y, z),
                         trapdoor_thickness, BLOCK_SIZE, BLOCK_SIZE)
             )
-        elif facing == "west":
+        elif facing == "east":
+            # attached to west (x)
             solids.append(
-                sg.cube(Vertex(x, y, z), 
+                sg.cube(Vertex(x, y, z),
                         trapdoor_thickness, BLOCK_SIZE, BLOCK_SIZE)
             )

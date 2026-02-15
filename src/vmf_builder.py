@@ -66,11 +66,9 @@ def apply_materials_to_solid(solid, block_type, exposed_faces, mat_path, face_ma
     for i, side in enumerate(solid.side):
         face_name = next((name for name, idx in face_map.items() if idx == i), None)
         if face_name:
-            # Wenn unterster Block: Bottom-Face immer auf nodraw setzen
-            if is_lowest and face_name == "bottom":
-                side.material = "tools/toolsnodraw"
-            elif face_name in exposed_faces:
-                # Spezielle Texturen für bestimmte Blöcke
+            # Never assign nodraw to trapdoors or their neighbors
+            if block_type.endswith("_trapdoor") or block_type.endswith("_stairs") or block_type.endswith("_slab"):
+                # Always assign the correct texture
                 if block_type == "grass_block":
                     if i == 4:
                         side.material = f"{mat_path}/grass_block_top"
@@ -83,8 +81,23 @@ def apply_materials_to_solid(solid, block_type, exposed_faces, mat_path, face_ma
                 else:
                     side.material = f"{mat_path}/{base_tex}"
             else:
-                side.material = "tools/toolsnodraw"
-            
+                # Wenn unterster Block: Bottom-Face immer auf nodraw setzen
+                if is_lowest and face_name == "bottom":
+                    side.material = "tools/toolsnodraw"
+                elif face_name in exposed_faces:
+                    if block_type == "grass_block":
+                        if i == 4:
+                            side.material = f"{mat_path}/grass_block_top"
+                        elif i == 5:
+                            side.material = f"{mat_path}/dirt"
+                        else:
+                            side.material = f"{mat_path}/grass_block_side"
+                    elif block_type.endswith(("_log", "_stem", "_wood")):
+                        side.material = f"{mat_path}/{base_tex}_top" if i in [4, 5] else f"{mat_path}/{base_tex}"
+                    else:
+                        side.material = f"{mat_path}/{base_tex}"
+                else:
+                    side.material = "tools/toolsnodraw"
             # UV-Mapping
             if i in [4, 5]:  # Top/Bottom
                 side.uaxis, side.vaxis = f"[1 0 0 0] {texture_scale_x}", f"[0 -1 0 0] {texture_scale_y}"
@@ -92,7 +105,6 @@ def apply_materials_to_solid(solid, block_type, exposed_faces, mat_path, face_ma
                 side.uaxis, side.vaxis = f"[1 0 0 0] {texture_scale_x}", f"[0 0 -1 0] {texture_scale_y}"
             else:  # East/West
                 side.uaxis, side.vaxis = f"[0 1 0 0] {texture_scale_x}", f"[0 0 -1 0] {texture_scale_y}"
-            
             side.lightmapscale = 16
             side.smoothing_groups = 0
 

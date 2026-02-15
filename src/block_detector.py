@@ -88,14 +88,15 @@ def get_exposed_blocks(world_path, x1, z1, x2, z2, y_min=-64, y_max=320,
                                             neighbor_x, ny, neighbor_z
                                         )
                                         neighbor_name = get_full_block_name(neighbor_block)
-                                        # Visible if air/transparent, fence/bars, slab or stairs
+                                        # Visible if air/transparent, fence/bars, slab, stairs, or trapdoor
                                         is_visible = (
                                             is_air_or_transparent(neighbor_name)
                                             or is_fence_or_bars(neighbor_name)
                                             or is_slab(neighbor_name)
                                             or is_stairs(neighbor_name)
+                                            or neighbor_name.endswith("_trapdoor")
                                         )
-                                        # Faces on fences/bars/slabs/stairs always visible
+                                        # Faces on fences/bars/slabs/stairs/trapdoors always visible
                                         if force_ns and face_name in ["north", "south"]:
                                             is_visible = True
                                         if force_ew and face_name in ["east", "west"]:
@@ -141,7 +142,8 @@ def get_exposed_blocks(world_path, x1, z1, x2, z2, y_min=-64, y_max=320,
                                 if exposed_faces:
                                     block_props = None
                                     try:
-                                        block_props = dict(block.properties)
+                                        # Convert all property values to plain strings if possible
+                                        block_props = {k: str(v) for k, v in block.properties.items()}
                                     except:
                                         pass
                                     exposed_blocks.append((

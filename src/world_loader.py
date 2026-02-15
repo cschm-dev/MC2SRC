@@ -25,7 +25,7 @@ def get_full_block_name(block):
         try:
             properties = block.properties
             if 'color' in properties:
-                return f"{properties['color'].py_str}_carpet"
+                return f"{properties['color']}_carpet"
         except:
             pass
         return "carpet"
@@ -34,13 +34,13 @@ def get_full_block_name(block):
         properties = block.properties
         if base_name in ['wool', 'concrete', 'concrete_powder', 'terracotta', 'glazed_terracotta', 'shulker_box']:
             if 'color' in properties:
-                return f"{properties['color'].py_str}_{base_name}"
+                return f"{properties['color']}_{base_name}"
         
         wood_blocks = ['planks', 'log', 'wood', 'stairs', 'slab', 'fence', 'fence_gate', 'trapdoor', 'leaves']
         if base_name in wood_blocks:
             for prop_name in ['variant', 'wood_type', 'material']:
                 if prop_name in properties:
-                    return f"{properties[prop_name].py_str}_{base_name}"
+                    return f"{properties[prop_name]}_{base_name}"
     except:
         pass
     return base_name

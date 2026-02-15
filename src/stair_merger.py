@@ -25,9 +25,9 @@ def greedy_mesh_stairs(blocks_info):
     groups = {}
     for (x, y, z), info in blocks_info.items():
         if is_mergeable_stairs(info['block_type'], info['properties']):
-            facing = info['properties']['facing'].py_str
-            half = info['properties']['half'].py_str
-            shape = info['properties']['shape'].py_str
+            facing = info['properties']['facing']
+            half = info['properties']['half']
+            shape = info['properties']['shape']
             key = (info['block_type'], facing, half, shape)
             if key not in groups:
                 groups[key] = {}

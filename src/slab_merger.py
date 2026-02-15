@@ -8,7 +8,7 @@ def is_mergeable_slab(block_type, properties):
         return False
     if not properties or "type" not in properties:
         return False
-    return properties["type"].py_str in ("top", "bottom")
+    return properties["type"] in ("top", "bottom")
 
 
 def greedy_mesh_slabs(blocks_info):
@@ -24,7 +24,7 @@ def greedy_mesh_slabs(blocks_info):
     groups = {}
     for (x, y, z), info in blocks_info.items():
         if is_mergeable_slab(info['block_type'], info['properties']):
-            slab_type = info['properties']['type'].py_str
+            slab_type = info['properties']['type']
             key = (info['block_type'], slab_type)
             if key not in groups:
                 groups[key] = {}

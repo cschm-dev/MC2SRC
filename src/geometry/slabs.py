@@ -10,7 +10,7 @@ def create_slab(x, y, z, properties):
     slab_type = "bottom"
     
     if properties and "type" in properties:
-        slab_type = properties["type"].py_str
+        slab_type = properties["type"]
     
     if slab_type == "double":
         solid = sg.cube(Vertex(x, y, z), BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE)
