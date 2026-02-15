@@ -4,7 +4,7 @@ Tested in Minecraft 1.21.5.
 
 Works pretty decent some blocks which have multiple sides e.g. bee hives are not fully automated #
 
-Your MC map can contain full blocks, fences, trapdoors (which are currently not wirking properly), iron bars, glas panes, stairs and slabs.
+Your MC map can contain full blocks, fences, trapdoors, iron bars, glas panes, stairs and slabs.
 Everything else converts to a full block.
 
 Here are the textures I used for the map:
